@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::view('/', 'home' )->name('home');
+
+Route::resource('/listevents', EventController::class, [
+    'names' => 'events',
+    'parameters' => ['listevents' => 'event'],
+]);
+
+Route::view('/login', 'auth.login')->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+Route::view('/register', 'auth.register')->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
