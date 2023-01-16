@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
-
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +25,17 @@ Route::resource('/listevents', EventController::class, [
     'parameters' => ['listevents' => 'event'],
 ]);
 
-Route::view('/login', 'auth.login')->name('login');
+Route::group(['middleware' => 'guest'], function () {
+    Route::view('/login', 'auth.login')->name('login');
+    Route::view('/register', 'auth.register')->name('register');
+});
+
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-Route::view('/register', 'auth.register')->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::fallback(function (){
+    return response()->view('home', [], 404);
+});
