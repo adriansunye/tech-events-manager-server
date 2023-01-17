@@ -26,6 +26,10 @@ class SaveEventRequest extends FormRequest
         return [
             'title'=> ['required', 'min:4'],
             'description' => ['required'],
+            'expiration_date' => ['required'],
+            'location' => ['required'],
+            'max_participants' => ['required'],
+            'image_path' => ['required','image',  'mimes:png,jpg,jpeg' , 'max:2048'],
         ];
     }
 }
