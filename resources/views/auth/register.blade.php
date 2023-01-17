@@ -3,33 +3,33 @@
   meta-description="Register meta desription"
 >
 
-<h1 class="my-4 font-serif text-3xl text-center text-sky-600 dark:text-sky-500">Register</h1>
+<h1 class="my-4 text-3xl text-center text-sky-600 dark:text-sky-500">Register</h1>
 <form class="max-w-xl px-8 py-4 mx-auto bg-white rounded shadow dark:bg-slate-800" action="{{ route('register') }}" method="POST">   
     @csrf
     <div class="space-y-4">
         <label class="flex flex-col">
-            <span class="font-serif text-slate-600 dark:text-slate-400">Name</span>
+            <span class=" text-slate-600 dark:text-slate-400">Name</span>
             <input autofocus="autofocus" class="rounded-md shadow-sm border-slate-300 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 focus:ring focus:ring-slate-300 dark:focus:ring-slate-800 focus:ring-opacity-50 dark:focus:border-slate-700 focus:border-slate-300 dark:bg-slate-800 dark:border-slate-900 dark:text-slate-100 dark:placeholder:text-slate-400" name="name" type="text" value="{{ old('name') }}">
             @error('name')
             <small class="font-bold text-red-500/80">{{ $message }}</small>
             @enderror
         </label>
         <label class="flex flex-col">
-            <span class="font-serif text-slate-600 dark:text-slate-400">Email</span>
+            <span class=" text-slate-600 dark:text-slate-400">Email</span>
             <input class="rounded-md shadow-sm border-slate-300 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 focus:ring focus:ring-slate-300 dark:focus:ring-slate-800 focus:ring-opacity-50 dark:focus:border-slate-700 focus:border-slate-300 dark:bg-slate-800 dark:border-slate-900 dark:text-slate-100 dark:placeholder:text-slate-400" name="email" type="email" value="{{ old('email') }}">
             @error('email')
             <small class="font-bold text-red-500/80">{{ $message }}</small>
             @enderror
         </label>
         <label class="flex flex-col">
-            <span class="font-serif text-slate-600 dark:text-slate-400">Password</span>
+            <span class=" text-slate-600 dark:text-slate-400">Password</span>
             <input class="rounded-md shadow-sm border-slate-300 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 focus:ring focus:ring-slate-300 dark:focus:ring-slate-800 focus:ring-opacity-50 dark:focus:border-slate-700 focus:border-slate-300 dark:bg-slate-800 dark:border-slate-900 dark:text-slate-100 dark:placeholder:text-slate-400" name="password" type="password">
             @error('password')
             <small class="font-bold text-red-500/80">{{ $message }}</small>
             @enderror
         </label>
         <label class="flex flex-col">
-            <span class="font-serif text-slate-600 dark:text-slate-400">Password Confirmation</span>
+            <span class=" text-slate-600 dark:text-slate-400">Password Confirmation</span>
             <input class="rounded-md shadow-sm border-slate-300 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 focus:ring focus:ring-slate-300 dark:focus:ring-slate-800 focus:ring-opacity-50 dark:focus:border-slate-700 focus:border-slate-300 dark:bg-slate-800 dark:border-slate-900 dark:text-slate-100 dark:placeholder:text-slate-400" name="password_confirmation" type="password">
             @error('password_confirmation')
             <small class="font-bold text-red-500/80">{{ $message }}</small>
