@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 
-Route::view('/', 'home' )->name('home');
+Route::get('/', function () {
+    return redirect('/listevents');
+});
 
 Route::resource('/listevents', EventController::class, [
     'names' => 'events',
@@ -30,6 +32,10 @@ Route::group(['middleware' => 'guest'], function () {
     Route::view('/register', 'auth.register')->name('register');
 });
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::view('/userevents', 'user.events')->name('user.events');
+});
+
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
@@ -37,5 +43,5 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::fallback(function (){
-    return response()->view('home', [], 404);
+    return to_route('events.index');
 });

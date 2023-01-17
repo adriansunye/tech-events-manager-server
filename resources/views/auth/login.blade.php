@@ -58,7 +58,7 @@
                 type="submit" style="padding: 18px 131px;">
                 Entra
             </button>
-            <div class="text-center">
+            <div class="text-center mt-2">
                 <span>Encara no ets usuari? </span>
                 <a class="text-sm font-semibold underline border-2 border-transparent rounded text-blue-600 focus:border-slate-500 focus:outline-none"
                     href="{{ route('register') }}">
