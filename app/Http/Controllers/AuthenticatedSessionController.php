@@ -8,25 +8,27 @@ use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string']
-           ]);
+        ]);
 
-           if(!Auth::attempt($credentials, $request->boolean('remember'))){
+        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => __('auth.failed')
             ]);
-           };
+        };
 
-           $request->session()->regenerate();
+        $request->session()->regenerate();
 
-           return redirect()->intended()
-           ->with('status', 'You are loged in');
+        return redirect()->intended()
+            ->with('status', 'You are loged in');
     }
 
-    public function destroy(Request $request){
+    public function destroy(Request $request)
+    {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
@@ -34,6 +36,4 @@ class AuthenticatedSessionController extends Controller
 
         return to_route('login')->with('status', 'You are logged out');
     }
-
-   
 }
