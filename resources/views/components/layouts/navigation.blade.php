@@ -4,7 +4,7 @@ class="w-screen overflow-scroll bg-white border-b dark:bg-slate-900 border-slate
     <div class="relative flex items-center justify-between h-16">
         <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
             <div class="flex items-center flex-shrink-0">
-                <a href="{{route('home') }}">
+                <a href="{{route('events.index') }}">
                     <svg class="w-8 h-8 text-sky-500" fill="none" width="0" stroke="currentColor"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
@@ -20,7 +20,7 @@ class="w-screen overflow-scroll bg-white border-b dark:bg-slate-900 border-slate
             <div class="mx-auto">
                 <div class="flex space-x-4">
                     <!-- Active: 'text-sky-600 dark:text-white', Inactive 'text-slate-400' -->
-                    <a href="{{route('home') }}"
+                    <a href="{{route('user.events') }}"
                         class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 dark:hover:text-dark {{request()->routeIs('home') ? 'text-sky-600' : 'text-slate-400'}}">
                         Home
                     </a>
