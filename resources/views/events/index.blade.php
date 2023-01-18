@@ -11,47 +11,47 @@
     @endcan
   
 </header>
-<main class="grid w-full gap-4 px-4 lg:px-16 md:grid-cols-2 lg:grid-cols-3 pb-24">
+<main class="grid w-full gap-4 lg:gap-x-32 px-6 md:px-16 pb-24">
   @foreach($events as $event)
-  <a  href="{{ route('events.show', $event) }}" class=" border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
+  <a  href="{{ route('events.show', $event) }}" class=" flex flex-row items-center bg-white border rounded-lg  md:flex-row   border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
 
-    <div class="grid grid-cols-4 md:grid-cols-7  ">
+    <div class="grid grid-cols-7  ">
 
       <!-- Profile Picture -->
-      <div class="md:col-span-3">
-        <img src="{{ asset('storage/images/events/'.$event->image_path) }}" class="w-full h-full rounded-l-lg" />
+      <div class="col-span-3 flex flex-col">
+        <img src="{{ asset('storage/images/events/'.$event->image_path) }}" class=" min-h-40 max-h-40 md:max-h-36 lg:min-h-64 rounded-l-lg" />
       </div>
 
       <!-- Description -->
-      <div class="col-span-3 md:col-span-4 m-3 ">
+      <div class="col-span-2  m-3 flex flex-col ">
 
-        <p class="text-sky-500 font-bold text-xs"> 7+ SPOTS LEFT </p>
+        <p class="text-sky-500 font-bold text-xs">{{ $event->max_participants }}+ SPOTS LEFT </p>
 
         <p class="text-gray-600 font-bold">{{ $event->title }} </p>
 
-        <p class="text-gray-400"> Fri, Mar 11 . 8:00 - 9:30 AM </p>
+        <p class="text-gray-400"> {{ $event->expiration_date }}  </p>
 
-        <p class="text-gray-400"> Beginner speakers </p>
+        <p class="text-gray-400">{{ $event->location }} </p>
 
       </div>
 
-     {{--  @auth
-      <div class="flex justify-between">
-        @can('edit events')
-          <a class="inline-flex items-center text-xs font-semibold tracking-widest text-center uppercase transition duration-150 ease-in-out dark:text-slate-400 text-slate-500 hover:text-slate-600 dark:hover:text-slate-500 focus:outline-none focus:border-slate-200" href="{{ route('events.edit', $event) }}">Edit</a>
-        @endcan
-        @can('delete events')
-          <form action="{{ route('events.destroy', $event) }}" method="POST">
-              @csrf
-              @method('DELETE')
-              <button class="inline-flex items-center text-xs font-semibold tracking-widest text-center text-red-500 uppercase transition duration-150 ease-in-out dark:text-red-500/80 hover:text-red-600 focus:outline-none" type="submit">Delete</button>
-          </form>
-        @endcan
-      </div>
-    @endauth --}}
+      
 
     </div>
-
+    @auth
+    <div class="flex justify-between">
+      @can('edit events')
+        <a class="inline-flex items-center text-xs font-semibold tracking-widest text-center uppercase transition duration-150 ease-in-out dark:text-slate-400 text-slate-500 hover:text-slate-600 dark:hover:text-slate-500 focus:outline-none focus:border-slate-200" href="{{ route('events.edit', $event) }}">Edit</a>
+      @endcan
+      @can('delete events')
+        <form action="{{ route('events.destroy', $event) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="inline-flex items-center text-xs font-semibold tracking-widest text-center text-red-500 uppercase transition duration-150 ease-in-out dark:text-red-500/80 hover:text-red-600 focus:outline-none" type="submit">Delete</button>
+        </form>
+      @endcan
+    </div>
+  @endauth 
   </a>
  
   @endforeach
