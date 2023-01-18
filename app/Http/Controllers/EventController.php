@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveEventRequest;
 use App\Models\Event;
-use App\Models\Image;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageServiceProvider;
+use Intervention\Image\Facades\Image;
+
 
 class EventController extends Controller
 {
@@ -17,9 +17,8 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::get();
-
         return view('events.index', ['events' => $events]);
-    } 
+    }
 
     public function show(Event $event)
     {
@@ -27,30 +26,33 @@ class EventController extends Controller
     }
 
     public function create()
-    { 
+    {
         return view('events.create', ['event' => new Event]);
     }
 
     public function store(SaveEventRequest $request)
     {
-        $validatedData = $request->validated();
+        $request->validated();
 
-        
-        $imageName = time().'.'.$request->image_path->extension();
+        $image = $request->file('image_path');
+        $input['image_path'] = uniqid() . '.' . $image->extension();
 
-        // Public Folder
-        $request->image_path->move(public_path('storage/images/events'), $imageName);
-            
-        $event  = new Event ;
+        $filePath = public_path('/storage/images/events');
+        $img = Image::make($image->path());
+        $img->fit(200)->save($filePath . '/' . $input['image_path']);
+
+        $filePath = public_path('/images');
+        $image->move($filePath, $input['image_path']);
+
+        $event  = new Event;
         $event->title = $request->title;
         $event->description = $request->description;
         $event->expiration_date = $request->expiration_date;
         $event->location = $request->location;
         $event->max_participants = $request->max_participants;
-        $event->image_path = $imageName;
+        $event->image_path = $input['image_path'];
 
         $event->save();
-
         return to_route('events.index')->with('status', 'Event created');
     }
 

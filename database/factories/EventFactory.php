@@ -23,6 +23,8 @@ class EventFactory extends Factory
             'title' => 'Event',
             'description' => 'description',
             'max_participants' => '100',
+            'expiration_date' => '2023-12-31',
+            'location' => 'Barcelona',
         ];
     }
 }
