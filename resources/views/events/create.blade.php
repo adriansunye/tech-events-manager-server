@@ -3,7 +3,7 @@
   meta-description="Form to create new event"
 >
 <h1 class="my-4  text-3xl text-center text-sky-600 dark:text-sky-500">Create new event</h1>
-<form class=" max-w-xl px-8 py-4 mx-auto bg-white rounded" action="{{ route('events.store') }}" method="POST"  enctype="multipart/form-data">>  
+<form class=" max-w-xl px-8 py-4 mx-auto bg-white rounded" action="{{ route('events.store') }}" method="POST"  enctype="multipart/form-data">
   @csrf
     @include('events.form-fields')
     <div class="mb-16">
