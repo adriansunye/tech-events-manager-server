@@ -19,7 +19,7 @@
 
 <h1 class="my-4 text-3xl text-center text-sky-600 dark:text-sky-500">User Events</h1>
 @auth
-  <div class="text-white">
+  <div class="text-black">
     Authenticated User: {{Auth::user()->name}}
   </div>
 @endauth
