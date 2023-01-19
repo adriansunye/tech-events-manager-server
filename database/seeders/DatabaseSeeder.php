@@ -26,9 +26,11 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'edit events']);
         Permission::create(['name' => 'delete events']);
         Permission::create(['name' => 'create events']);
+        Permission::create(['name' => 'join events']);
 
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'user']);
+        $role1->givePermissionTo('join events');
 
         $role2 = Role::create(['name' => 'admin']);
         $role2->givePermissionTo('edit events');

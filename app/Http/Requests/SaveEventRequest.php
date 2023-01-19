@@ -24,7 +24,7 @@ class SaveEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=> ['required', 'min:4'],
+            'title'=> ['required', 'min:4', 'max:19'],
             'description' => ['required'],
             'expiration_date' => ['required'],
             'location' => ['required'],
