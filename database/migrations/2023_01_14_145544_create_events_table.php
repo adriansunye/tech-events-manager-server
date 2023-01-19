@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('expiration_date');
             $table->string('location');
             $table->integer('max_participants');
-            $table->longText('image_path')->default('src');
+            $table->longText('image_path');
             $table->timestamps();
         });
     }
