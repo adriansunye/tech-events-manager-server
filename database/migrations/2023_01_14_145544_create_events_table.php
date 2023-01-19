@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->date('expiration_date');
+            $table->timestamp('expiration_date');
             $table->string('location');
+            $table->integer('participants')->default(0);
             $table->integer('max_participants');
             $table->longText('image_path')->default('src');
             $table->timestamps();

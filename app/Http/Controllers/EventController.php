@@ -16,8 +16,8 @@ class EventController extends Controller
     }
     public function index()
     {
-        $events = Event::get();
-        return view('events.index', ['events' => $events]);
+        $events = Event::with('users')->get();
+        return view('events.index', compact('events'));
     }
 
     public function show(Event $event)
