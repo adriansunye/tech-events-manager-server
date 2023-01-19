@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveEventRequest;
 use App\Models\Event;
+use DateTime;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -44,10 +45,16 @@ class EventController extends Controller
         $filePath = public_path('/images');
         $image->move($filePath, $input['image_path']);
 
+        $datetime = new DateTime($request->expiration_date);
+
+        $date = $datetime->format('Y-m-d');
+        $time = $datetime->format('H:i:s');
+
         $event  = new Event;
         $event->title = $request->title;
         $event->description = $request->description;
-        $event->expiration_date = $request->expiration_date;
+        $event->expiration_date = $date;
+        $event->expiration_time = $time;
         $event->location = $request->location;
         $event->max_participants = $request->max_participants;
         $event->image_path = $input['image_path'];

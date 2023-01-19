@@ -14,9 +14,7 @@ class JoinController extends Controller
         $user = Auth::user()->id;
         $event->users()->attach($user);
 
-        $eventUpdate =  Event::findOrFail($event->id);
-
-        $eventUpdate->participants += 1;
+        $event->increment('participants');
         $event->save();
 
         return to_route('events.index')->with('status', 'Joined');

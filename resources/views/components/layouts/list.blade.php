@@ -43,7 +43,7 @@
                 <div class="p-3 pb-0 sm:flex flex-1 gap-7 flex-row  justify-start">
                     <div class="flex flex-col">
                         <p class="text-gray-400">
-                            {{ new DateTime($event['expiration_date']) > new DateTime() ? $event->expiration_date : 'Esdeveniment passat' }}
+                            {{ new DateTime($event['expiration_date']) > new DateTime() ? $event->expiration_date.' '.$event->expiration_time : 'Esdeveniment passat' }}
                         </p>
                         <h3 class="font-bold mb-1 text-grey-darkest">{{ $event->title }}</h3>
                         <div class="text-xs flex items-center mb-4">
