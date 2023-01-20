@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->timestamp('expiration_date');
+            $table->date('expiration_date');
+            $table->time('expiration_time');
             $table->string('location');
             $table->integer('participants')->default(0);
             $table->integer('max_participants');
-            $table->longText('image_path');
+            $table->longText('image_path')->default('placeholder.jpg');
             $table->timestamps();
         });
     }

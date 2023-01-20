@@ -8,7 +8,7 @@
 
     <a class="mr-auto text-sm font-semibold underline border-2 border-transparent rounded dark:text-slate-300 text-slate-600 focus:border-slate-500 focus:outline-none" href="{{ route('events.index') }}">Regresar</a>
 </div>
-@can('join events')
+@can('join-events')
 @if($event->users->doesntContain(Auth::user()) 
   && new DateTime($event['expiration_date']) > new DateTime() 
     && $event->max_participants > $event->participants)

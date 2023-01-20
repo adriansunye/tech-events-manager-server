@@ -23,19 +23,19 @@ class DatabaseSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
-        Permission::create(['name' => 'edit events']);
-        Permission::create(['name' => 'delete events']);
-        Permission::create(['name' => 'create events']);
-        Permission::create(['name' => 'join events']);
+        Permission::create(['name' => 'edit-events']);
+        Permission::create(['name' => 'delete-events']);
+        Permission::create(['name' => 'create-events']);
+        Permission::create(['name' => 'join-events']);
 
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'user']);
-        $role1->givePermissionTo('join events');
+        $role1->givePermissionTo('join-events');
 
         $role2 = Role::create(['name' => 'admin']);
-        $role2->givePermissionTo('edit events');
-        $role2->givePermissionTo('delete events');
-        $role2->givePermissionTo('create events');
+        $role2->givePermissionTo('edit-events');
+        $role2->givePermissionTo('delete-events');
+        $role2->givePermissionTo('create-events');
 
         $role3 = Role::create(['name' => 'Super-Admin']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider

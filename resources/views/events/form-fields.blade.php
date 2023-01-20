@@ -38,7 +38,7 @@
         <div class="mb-1">
             <input
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-emerald-400 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                name="expiration_date"type="datetime-local"  placeholder="Data i hora del esdeveniment" value={{old('expiration_date', $event->expiration_date)}}>
+                name="expiration_date" type="datetime-local"  placeholder="Data i hora del esdeveniment" value={{old('expiration_date', $event->expiration_date)}}>
                 @error('expiration_date')
                 <small class="font-bold text-red-500/80">{{ $message }}</small>
                 @enderror
