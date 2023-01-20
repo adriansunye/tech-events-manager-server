@@ -17,9 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->integer('max_participants')->default('100');
-            $table->longText('image_path')->default('src');
-            $table->date('expiration_date')->default('1000-01-01 00:00:00');
+            $table->date('expiration_date');
+            $table->time('expiration_time');
+            $table->string('location');
+            $table->integer('participants')->default(0);
+            $table->integer('max_participants');
+            $table->longText('image_path')->default('placeholder.jpg');
             $table->timestamps();
         });
     }

@@ -22,6 +22,9 @@ class EventFactory extends Factory
         return [
             'title' => 'Event',
             'description' => 'description',
+            'expiration_date' => '2023-12-31',
+            'expiration_time' => '00:00:00',
+            'location' => 'Barcelona',
             'max_participants' => '100',
         ];
     }
