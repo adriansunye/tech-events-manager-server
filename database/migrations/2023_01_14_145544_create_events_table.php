@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('location');
             $table->integer('participants')->default(0);
             $table->integer('max_participants');
-            $table->longText('image_path')->default('src');
+            $table->longText('image_path')->default('placeholder.jpg');
             $table->timestamps();
         });
     }

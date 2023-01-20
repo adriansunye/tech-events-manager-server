@@ -14,6 +14,11 @@ class EventController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        // Middleware only applied to these methods
+        $this->middleware(['role:admin','permission:create-events'])->only([
+        'create',
+        'edit'
+    ]);
     }
     public function index()
     {

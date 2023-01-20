@@ -1,11 +1,11 @@
 <main class="grid w-full gap-4 lg:gap-x-32 px-6 md:px-16 pb-24">
-    @foreach ($events->sortByDesc('expiration_date') as $event)
+    @foreach ($events->sortBy('expiration_date') as $event)
         <div id="app"
             href="{{ route('events.show', $event) }}"class="bg-white  rounded-lg shadow-md flex card text-grey-darkest">
             <div class=" flex gap-3 flex-col justify-between">
                 <img class="  mt-3 ml-3 max-w-36 max-h-36  rounded-lg"
                     src="{{ asset('storage/images/events/' . $event->image_path) }}" alt="Room Image">
-                @can('join events')
+                @can('join-events')
                 @if($event->users->doesntContain(Auth::user()) 
                 && new DateTime($event['expiration_date']) > new DateTime()
                     && $event->max_participants > $event->participants)
@@ -57,8 +57,11 @@
                             </svg>
                             {{ $event->location }}
                         </div>
-                        <span class=" text-emerald-400">{{ $event->max_participants - $event->participants }} places
-                            lliures</span>
+                        <span class=" text-emerald-400">
+                            {{ $event->max_participants - $event->participants == 0 
+                                ? 'Sense places' 
+                                : ($event->max_participants - $event->participants).' places lliures'}}
+                        </span>
                         <div class="flex items-center mt-4">
                             <div class="pr-2 text-xs">
                                 <i class="fas fa-wifi text-green"></i>
@@ -73,7 +76,7 @@
                 <div class="flex flex-1 flex-col justify-between">
                     <div class="flex gap-2 flex-row justify-end mr-4">
                         @auth
-                            @can('edit events')
+                            @can('edit-events')
                                 <a class="text-xs font-semibold tracking-widest text-center uppercase transition duration-150 ease-in-out dark:text-slate-400 text-slate-500 hover:text-slate-600 dark:hover:text-slate-500 focus:outline-none focus:border-slate-200"
                                     href="{{ route('events.edit', $event) }}">
                                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -84,7 +87,7 @@
                                     </svg>
                                 </a>
                             @endcan
-                            @can('delete events')
+                            @can('delete-events')
                                 <form action="{{ route('events.destroy', $event) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

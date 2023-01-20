@@ -23,7 +23,9 @@ class LoginTest extends TestCase
      *
      * @return void
      */
-    public function test_user_can_view_a_login_form()
+
+     /** @test */
+    public function user_can_view_a_login_form()
     {
         $response = $this->get('/login');
 
@@ -76,7 +78,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function test_remember_me_functionality()
+    public function user_checks_remember_me_radio_and_session_cookie_is_generated()
     {
         $user = User::factory()->create([
             'password' => bcrypt($password = 'i-love-laravel'),
@@ -87,9 +89,29 @@ class LoginTest extends TestCase
             'password' => $password,
             'remember' => 'on',
         ]);
+        $cookieName = "remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d" ;
+
+        $response->assertRedirect('/');
+        $response->assertCookieNotExpired($cookieName);
+        $this->assertAuthenticatedAs($user);
+    }
+
+    /** @test */
+    public function user_unchecks_remember_me_radio_and_session_cookie_is_not_generated()
+    {
+        $user = User::factory()->create([
+            'password' => bcrypt($password = 'i-love-laravel'),
+        ]);
+        
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => $password,
+            'remember' => 'off',
+        ]);
+        $cookieName = "remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d" ;
         
         $response->assertRedirect('/');
-        // cookie assertion goes here
+        $response->assertCookieMissing($cookieName);
         $this->assertAuthenticatedAs($user);
     }
 }
