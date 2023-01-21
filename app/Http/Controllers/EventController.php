@@ -15,10 +15,10 @@ class EventController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
         // Middleware only applied to these methods
-        $this->middleware(['role:admin','permission:create-events'])->only([
-        'create',
-        'edit'
-    ]);
+        $this->middleware(['permission:create-events'])->only([
+            'create',
+            'edit'
+        ]);
     }
     public function index()
     {
@@ -40,30 +40,37 @@ class EventController extends Controller
     {
         $request->validated();
 
-        $image = $request->file('image_path');
-        $input['image_path'] = uniqid() . '.' . $image->extension();
+        $event  = new Event;
 
-        $filePath = public_path('/storage/images/events');
-        $img = Image::make($image->path());
-        $img->fit(200)->save($filePath . '/' . $input['image_path']);
+        if($request->hasFile('image_path')){ 
+            $image = $request->file('image_path');
+            $input['image_path'] = uniqid() . '.' . $image->extension();
 
-        $filePath = public_path('/images');
-        $image->move($filePath, $input['image_path']);
+            $filePath = public_path('/storage/images/events');
+            $img = Image::make($image->path());
+            $img->fit(200)->save($filePath . '/' . $input['image_path']);
+
+            $filePath = public_path('/images');
+            $image->move($filePath, $input['image_path']);
+
+            $event->image_path = $input['image_path'];
+        }
+        else{
+            $event->image_path = 'placeholder.jpg';
+        }
 
         $datetime = new DateTime($request->expiration_date);
 
         $date = $datetime->format('Y-m-d');
         $time = $datetime->format('H:i:s');
 
-        $event  = new Event;
         $event->title = $request->title;
         $event->description = $request->description;
         $event->expiration_date = $date;
         $event->expiration_time = $time;
         $event->location = $request->location;
         $event->max_participants = $request->max_participants;
-        $event->image_path = $input['image_path'];
-
+       
         $event->save();
         return to_route('events.index')->with('status', 'Event created');
     }

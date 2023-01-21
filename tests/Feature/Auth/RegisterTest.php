@@ -96,7 +96,6 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
 
         $response->assertRedirect('/register');
-        $response->assertLocation('/register');
 
         $this->assertGuest();
     }

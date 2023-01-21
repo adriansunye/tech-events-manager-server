@@ -3,7 +3,7 @@
         <div id="app"
             href="{{ route('events.show', $event) }}"class="bg-white  rounded-lg shadow-md flex card text-grey-darkest">
             <div class=" flex gap-3 flex-col justify-between">
-                <img class="  mt-3 ml-3 max-w-36 max-h-36  rounded-lg"
+                <img class="mt-3 ml-3 max-w-36 max-h-36  rounded-lg"
                     src="{{ asset('storage/images/events/' . $event->image_path) }}" alt="Room Image">
                 @can('join-events')
                 @if($event->users->doesntContain(Auth::user()) 
