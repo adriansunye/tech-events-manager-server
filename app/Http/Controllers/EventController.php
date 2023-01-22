@@ -69,6 +69,7 @@ class EventController extends Controller
         $event->expiration_time = $time;
         $event->location = $request->location;
         $event->max_participants = $request->max_participants;
+        $event->highlighted = $request->boolean('highlighted');
 
         $event->save();
         return to_route('events.index')->with('status', 'Event created');
@@ -109,6 +110,7 @@ class EventController extends Controller
         $event->expiration_time = $time;
         $event->location = $request->location;
         $event->max_participants = $request->max_participants;
+        $event->highlighted = $request->boolean('highlighted');
 
         $event->update();
         return to_route('events.show', $event)->with('status', 'Event updated');
