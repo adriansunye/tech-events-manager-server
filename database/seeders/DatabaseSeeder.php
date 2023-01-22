@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Event;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 use Spatie\Permission\Models\Permission;
@@ -41,25 +44,59 @@ class DatabaseSeeder extends Seeder
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
-        $user = \App\Models\User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Example User',
             'email' => 'user@example.com',
             'password' => bcrypt('user'),
         ]);
         $user->assignRole($role1);
 
-        $user = \App\Models\User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'Example Admin User',
             'email' => 'admin@example.com',
             'password' => bcrypt('admin'),
         ]);
-        $user->assignRole($role2);
+        $admin->assignRole($role2);
 
-        $user = \App\Models\User::factory()->create([
+        $superAdmin = User::factory()->create([
             'name' => 'Example Super-Admin User',
             'email' => 'superadmin@example.com',
             'password' => bcrypt('superAdmin'),
         ]);
-        $user->assignRole($role3);
+        $superAdmin->assignRole($role3);
+
+        // create demo posts
+        Event::factory()->create([
+            'title' => 'Seeder Event',
+            'description' => 'description',
+            'expiration_date' => '2023-04-20',
+            'location' => 'Barcelona',
+            'max_participants' => '100',
+        ]);
+
+        Event::factory()->create([
+            'title' => 'Past Event',
+            'description' => 'description',
+            'expiration_date' => '1999-12-31',
+            'location' => 'FactoriaF5',
+            'max_participants' => '50',
+        ]);
+
+        Event::factory()->create([
+            'title' => 'Full Event',
+            'description' => 'description',
+            'expiration_date' => '2023-12-3',
+            'location' => 'Tortosa',
+            'max_participants' => '0',
+        ]);
+
+        $event = Event::factory()->create([
+            'title' => 'Joined Event',
+            'description' => 'description',
+            'expiration_date' => '2023-07-24',
+            'location' => 'Barcelona',
+            'max_participants' => '100',
+        ]);
+        $event->users()->attach($user);
     }
 }
