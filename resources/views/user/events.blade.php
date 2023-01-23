@@ -26,7 +26,7 @@
     <div class="p-14">
 
       @foreach ($events as $event)
-      <a href="#" class="flex  items-center bg-white border rounded-3xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-8">
+      <a href="#" class="flex  items-center bg-white border rounded-3xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-8 bg-white  rounded-lg shadow-md">
         <div class="flex flex-col justify-between  leading-normal ml-8">
           <div class="text-xs flex items-center mb-4">
           <svg width="15" height="15"  fill="none" stroke="#34D399" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
