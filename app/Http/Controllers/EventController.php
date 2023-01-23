@@ -42,20 +42,19 @@ class EventController extends Controller
 
         $event  = new Event;
 
-        if($request->hasFile('image_path')){ 
+        if ($request->hasFile('image_path')) {
             $image = $request->file('image_path');
             $input['image_path'] = uniqid() . '.' . $image->extension();
 
             $filePath = public_path('/storage/images/events');
             $img = Image::make($image->path());
-            $img->fit(200)->save($filePath . '/' . $input['image_path']);
+            $img->fit(1080)->save($filePath . '/' . $input['image_path']);
 
             $filePath = public_path('/images');
             $image->move($filePath, $input['image_path']);
 
             $event->image_path = $input['image_path'];
-        }
-        else{
+        } else {
             $event->image_path = 'placeholder.jpg';
         }
 
@@ -70,7 +69,8 @@ class EventController extends Controller
         $event->expiration_time = $time;
         $event->location = $request->location;
         $event->max_participants = $request->max_participants;
-       
+        $event->highlighted = $request->boolean('highlighted');
+
         $event->save();
         return to_route('events.index')->with('status', 'Event created');
     }
@@ -82,7 +82,37 @@ class EventController extends Controller
 
     public function update(SaveEventRequest $request, Event $event)
     {
-        $event->update($request->validated());
+
+        $request->validated();
+
+        if ($request->hasFile('image_path')) {
+            $image = $request->file('image_path');
+            $input['image_path'] = uniqid() . '.' . $image->extension();
+
+            $filePath = public_path('/storage/images/events');
+            $img = Image::make($image->path());
+            $img->fit(1080)->save($filePath . '/' . $input['image_path']);
+
+            $filePath = public_path('/images');
+            $image->move($filePath, $input['image_path']);
+
+            $event->image_path = $input['image_path'];
+        }
+
+        $datetime = new DateTime($request->expiration_date);
+
+        $date = $datetime->format('Y-m-d');
+        $time = $datetime->format('H:i:s');
+
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->expiration_date = $date;
+        $event->expiration_time = $time;
+        $event->location = $request->location;
+        $event->max_participants = $request->max_participants;
+        $event->highlighted = $request->boolean('highlighted');
+
+        $event->update();
         return to_route('events.show', $event)->with('status', 'Event updated');
     }
 

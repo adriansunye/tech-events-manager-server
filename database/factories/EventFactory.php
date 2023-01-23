@@ -20,7 +20,7 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            'title' => 'Event',
+            'title' => 'EventFactory',
             'description' => 'description',
             'expiration_date' => '2023-12-31',
             'expiration_time' => '00:00:00',
