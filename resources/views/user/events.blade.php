@@ -2,8 +2,8 @@
 
   <div class="min-h-[50%]">
     <div class="bg-emerald-400 ">
-      <div class="flex  justify-around ">
-        <h2 class="text-4xl font-extrabold dark:text-white" >Perfil</h2>
+      <div class="flex  justify-between p-8 ">
+        <h2 class="text-4xl font-extrabold dark:text-white text-white" >Perfil</h2>
         @auth
         <form action="{{ route('logout') }}" method="POST">
           @csrf
@@ -17,16 +17,22 @@
         </form>
         @endauth
       </div>
-
+      <div class="flex  items-center ">
+        <p class="ml-8 text-white underline font-semibold"  >Esdeveniments</p>
+        <p class="ml-8 text-white"> Esdeveniments passats</p>
+      </div>
     </div>
 
-    <div>
+    <div class="p-14">
 
       @foreach ($events as $event)
-      <a href="#" class="flex  items-center bg-white border   hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    
-        <div class="flex flex-col justify-between  leading-normal ">
-          <p class="text-gray-400 "> {{ $event->expiration_date }}</p>
+      <a href="#" class="flex  items-center bg-white border rounded-3xl  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-8">
+        <div class="flex flex-col justify-between  leading-normal ml-8">
+          <div class="text-xs flex items-center mb-4">
+          <svg width="15" height="15"  fill="none" stroke="#34D399" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"></path>
+</svg><p class="text-gray-400 "> {{ $event->expiration_date }}</p>
+          </div>
           <h3 class="font-bold mb-1 text-grey-darkest ">{{ $event->title }}</h3>
           <div class="text-xs flex items-center mb-4">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -37,7 +43,7 @@
             {{ $event->location }}
           </div>
         </div>
-        <img class="flex flex-row-reverse h-auto max-w-lg ml-auto" src="{{ asset('storage/images/events/' . $event->image_path) }}" alt="Room Image">
+        <img class="flex flex-start md:w-22 lg:w-28 rounded-3xl h-auto max-w-lg ml-auto" src="{{ asset('storage/images/events/' . $event->image_path) }}" alt="Room Image">
       </a>
       @endforeach
     </div>
