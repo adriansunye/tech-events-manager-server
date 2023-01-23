@@ -29,7 +29,7 @@ class SaveEventRequest extends FormRequest
             'expiration_date' => ['required'],
             'location' => ['required'],
             'max_participants' => ['required'],
-            'image_path' => ['required','image',  'mimes:png,jpg,jpeg' , 'max:2048'],
+            'image_path' => ['image', 'mimes:png,jpg,jpeg' , 'max:2048'],
         ];
     }
 }

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -22,6 +23,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
+        $role = Role::where('name', 'user')->first();
+        $user->assignRole($role);
 
         Auth::login($user);
         return to_route('events.index')->with('status', 'Account created');
