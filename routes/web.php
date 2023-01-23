@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserEventsController;
 use App\Http\Controllers\JoinController;
 use Illuminate\Support\Facades\Redirect;
 
@@ -34,7 +35,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::view('/userevents', 'user.events')->name('user.events');
+    Route::get('/userevents', [UserEventsController::class,'index'])->name('user.events');
 });
 
 Route::post('/listevents/{event}/join', [JoinController::class, 'update'])->name('relation');

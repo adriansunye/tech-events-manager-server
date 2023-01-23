@@ -30,7 +30,7 @@ class EventController extends Controller
     {
         return view('events.show', ['event' => $event]);
     }
-
+      
     public function create()
     {
         return view('events.create', ['event' => new Event]);
@@ -91,4 +91,7 @@ class EventController extends Controller
         $event->delete();
         return to_route('events.index')->with('status', 'Event deleted');
     }
+    
 }
+
+
