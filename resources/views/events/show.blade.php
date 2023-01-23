@@ -8,4 +8,19 @@
 
     <a class="mr-auto text-sm font-semibold underline border-2 border-transparent rounded dark:text-slate-300 text-slate-600 focus:border-slate-500 focus:outline-none" href="{{ route('events.index') }}">Regresar</a>
 </div>
+@can('join-events')
+@if($event->users->doesntContain(Auth::user()) 
+  && new DateTime($event['expiration_date']) > new DateTime() 
+    && $event->max_participants > $event->participants)
+<form action="{{ route('relation', $event) }}" method="POST">
+  @csrf
+
+  <button
+      class="text-xs font-semibold text-red-500 uppercase transition duration-150 ease-in-out dark:text-red-500/80 hover:text-red-600 focus:outline-none"
+      type="submit">
+      JOIN
+  </button>
+</form> 
+@endif
+@endcan
 </x-layouts.app>

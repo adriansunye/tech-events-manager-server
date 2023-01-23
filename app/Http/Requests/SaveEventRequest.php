@@ -24,12 +24,12 @@ class SaveEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=> ['required', 'min:4'],
+            'title'=> ['required', 'min:4', 'max:19'],
             'description' => ['required'],
             'expiration_date' => ['required'],
             'location' => ['required'],
             'max_participants' => ['required'],
-            'image_path' => ['required','image',  'mimes:png,jpg,jpeg' , 'max:2048'],
+            'image_path' => ['image',  'mimes:png,jpg,jpeg' , 'max:2048'],
         ];
     }
 }
