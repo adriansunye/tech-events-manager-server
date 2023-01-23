@@ -43,7 +43,7 @@
             {{ $event->location }}
           </div>
         </div>
-        <img class="flex flex-start md:w-22 lg:w-28  max-w-36 max-h-36  rounded-lg rounded-3xl h-auto max-w-lg ml-auto" src="{{ asset('storage/images/events/' . $event->image_path) }}" alt="Room Image">
+        <img class="flex flex-start md:w-22 lg:w-28 rounded-3xl h-auto max-w-lg ml-auto max-w-36 max-h-36  rounded-lg" src="{{ asset('storage/images/events/' . $event->image_path) }}" alt="Room Image">
       </a>
       @endforeach
     </div>

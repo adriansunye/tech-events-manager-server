@@ -8,5 +8,8 @@
   <div class="text-white">
     Authenticated User: {{Auth::user()->name}}
   </div>
+  
 @endauth
+
+
 </x-layouts.app>

@@ -12,7 +12,7 @@
                 </svg>
                 <span class="tab tab-home block text-xs">Home</span>
             </a>
-            <a href=""
+            <a href="{{ route('user.events') }}"
                 class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
                 <svg width="25" height="25" fill="none" stroke-width="1.5" viewBox="0 0 24 24"
                     class="inline-block mb-1 {{ request()->routeIs('user.events') ? 'stroke-emerald-500' : 'stroke-black' }}">

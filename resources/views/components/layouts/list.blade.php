@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-1 flex-col justify-around hidden sm:block ">
+                    <div class="    flex-1 flex-col justify-around hidden sm:block ">
                         <span>{{ $event->description }}</span>
                     </div>
                 </div>
