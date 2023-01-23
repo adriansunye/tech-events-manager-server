@@ -10,19 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
-    public function store(Request $request){
-       $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'max:255', 'email', 'unique:users'],
-        'password' => ['required', 'confirmed', Rules\Password::defaults()]
-       ]);
-       $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password),
-       ]);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255', 'email', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()]
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
 
-       Auth::login($user);
-       return to_route('home')->with('status', 'Account created');
+        Auth::login($user);
+        return to_route('events.index')->with('status', 'Account created');
     }
 }

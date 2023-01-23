@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('events_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps();
+            $table->unsignedBiginteger('event_id')->unsigned();
+            $table->unsignedBiginteger('user_id')->unsigned();
+
+            $table->foreign('event_id')->references('id')
+                ->on('events')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade');
         });
     }
 
