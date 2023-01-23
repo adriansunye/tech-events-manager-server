@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailJob;
 use App\Mail\SendEmailEventJoined;
 use App\Models\Event;
 use App\Models\User;
@@ -18,8 +19,12 @@ class JoinController extends Controller
 
         $event->increment('participants');
         $event->save();
+
+        $details['email'] = Auth::user()->email;
  
-        Mail::to(Auth::user()->email)->send(new SendEmailEventJoined($event));
+        Mail::to($details['email'])->queue(new SendEmailEventJoined($event));
+        
+        //dispatch(new SendEmailJob($details));
 
         return to_route('events.index')->with('status', 'Joined');
     }
