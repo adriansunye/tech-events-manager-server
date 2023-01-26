@@ -99,9 +99,10 @@ class DatabaseSeeder extends Seeder
         ]);
         $event->users()->attach($user);
 
-        Event::factory()->count(10)->create([
-          'highlighted' => '1',
-      ]);
+
+        Event::factory()->count(5)->create([
+            'highlighted' => '1',
+        ]);
 
     }
 

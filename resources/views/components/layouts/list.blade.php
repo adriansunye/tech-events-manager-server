@@ -1,4 +1,4 @@
-<main class="grid w-full gap-4 lg:gap-x-32 px-6 md:px-16 pb-24">
+<main class="grid w-full gap-4 lg:gap-x-32 px-6 md:px-16 pb-24">    
     @foreach ($events->sortBy('expiration_date') as $event)
         <div id="app"
             href="{{ route('events.show', $event) }}"class="bg-white  rounded-lg shadow-md flex card text-grey-darkest">
