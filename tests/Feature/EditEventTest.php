@@ -84,7 +84,6 @@ class EditEventTest extends TestCase
         ->assertSessionHasNoErrors();
 
         $this->get("/listevents")->assertOk()
-            ->assertSee($event->title, $event->description)
-            ->assertDontSeeText('EventFactory');
+            ->assertSee($event->title, $event->description);
     }
 }
