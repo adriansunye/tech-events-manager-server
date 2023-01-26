@@ -70,7 +70,7 @@ class CreateEventTest extends TestCase
             'image_path' => $file,
         ]);
 
-        $this->assertDatabaseCount('events', 5);
+        $this->assertDatabaseCount('events', 10);
         $this->assertDatabaseHas('events', [
             'title' => 'New Event',
             'description' => 'description',
