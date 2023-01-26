@@ -98,5 +98,9 @@ class DatabaseSeeder extends Seeder
             'max_participants' => '100',
         ]);
         $event->users()->attach($user);
+
+        Event::factory()->count(5)->create([
+            'highlighted' => '1',
+        ]);
     }
 }

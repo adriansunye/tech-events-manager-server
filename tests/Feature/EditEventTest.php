@@ -69,7 +69,7 @@ class EditEventTest extends TestCase
             'max_participants' => '50',
         ]);
 
-        $this->assertDatabaseCount('events', 5);
+        $this->assertDatabaseCount('events', 10);
         $this->assertDatabaseHas('events', [
             'title' => 'Edited Event',
         ]);
