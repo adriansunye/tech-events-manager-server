@@ -99,8 +99,13 @@ class DatabaseSeeder extends Seeder
         ]);
         $event->users()->attach($user);
 
+
         Event::factory()->count(5)->create([
             'highlighted' => '1',
         ]);
+
     }
+
 }
+
+
