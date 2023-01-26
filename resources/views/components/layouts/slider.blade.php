@@ -1,4 +1,3 @@
-
 <section id="topEvents" class="top--events">
   <h2 class="text-xl font-medium text-center">Esdeveniments rellevants</h2>
   <div class="top--events-carousel flex flex-row gap-6 m-2 rounded-lg p-10 overflow-x-scroll no-scrollbar">
