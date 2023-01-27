@@ -21,6 +21,6 @@ class JoinController extends Controller
  
         Mail::to(Auth::user()->email)->send(new SendEmailEventJoined($event));
 
-        return to_route('events.index')->with('status', 'Joined');
+        return to_route('events.index')->with('status', 't\'has unit');
     }
 }

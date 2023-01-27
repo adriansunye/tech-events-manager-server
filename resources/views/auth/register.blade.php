@@ -1,5 +1,5 @@
 <x-layouts.app 
-  title="Register" 
+  title="Registre" 
   meta-description="Register meta desription"
 >
 
@@ -71,7 +71,7 @@
             @enderror
         </div>
     </div>
-    <div class="block fixed inset-x-10 bottom-24">
+    <div class="block">
             <button
                 class="w-full  shadow bg-emerald-500 hover:bg-emerald-400 focus:shadow-outline focus:outline-none text-white font-bold rounded"
                 type="submit" style="padding: 18px 112px;">

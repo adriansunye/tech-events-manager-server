@@ -1,66 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Tech Events Manager
+![Tech-Events-Manager](public\storage\images\events\placeholder.jpg)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Table of Contents
+- [Tech Events Manager](#tech-events-manager)
+  - [Table of Contents](#table-of-contents)
+  - [General Information](#general-information)
+  - [Screenshots](#screenshots)
+  - [Technologies](#technologies)
+  - [Installation](#installation)
+  - [Versions](#versions)
+  - [Deployment](#deployment)
+  - [Support](#support)
+  - [Collaboration](#collaboration)
+  - [Authors](#authors)
+  - [FAQs](#faqs)
+***
+## General Information
+Tech Events Manager is a mobile app designed to manage Eventsaverno's online events, such as workshops, masterclasses and webinars.
+Users may join and leave events, and access information related to them.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+ 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+***
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Screenshots
 
-## Learning Laravel
+![screenshot01]()
+***
+![screenshot02]()
+***
+![screenshot03]()
+***
+![screenshot04]()
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+***
+## Technologies
+The project was developed with the following technologies
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* PHP
+* Laravel 9
+* Blade
+* Tailwind
+* Flowbite
+* Node Js
+* Npm
+* Vite
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1- Install PHP and Composer on your computer. You can find instructions for this on the [PHP website](https://www.php.net/).
 
-### Premium Partners
+2- Clone the app's repository from GitHub on this [link](https://github.com/adriansunye/tech-events-manager-server.git)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+3 - Navigate to the app's directory:<br/>
+`cd tech-events-manager-server`
 
-## Contributing
+4 - Install the app's dependencies using Composer: <br/>
+`composer install`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5 - Create a new file named .env and enter your credentials<br/>
+`cp .env.example .env`
 
-## Code of Conduct
+6 - Install the app's JavaScript dependencies using npm:<br/>
+`npm install`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7 - Compile the app's assets using npm:<br/>
+`npm run dev` and `npm run build`
 
-## Security Vulnerabilities
+8 - Create the database using a relational database<br/>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+9 - Run the migrations to create the tables and relationships, and populate the data with the seeders:<br/>
+´php artisan migrate:fresh --seed´
 
-## License
+10 - Run the app using PHP:<br/>
+`php artisan serve`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Versions
+
+PHP 8.0.2<br>
+laravel/framework: 9.19
+
+* Plugins
+
+spatie/laravel-permission 5.8<br>
+intervention/image 2.7<br>
+sempro/phpunit-pretty-print 1.4
+
+
+
+***
+## Deployment
+
+  
+[Visit our link](https://)
+
+
+***
+
+
+## Support
+
+To handle any enquiries contact
+>andres.patino@factoriaf5.org
+
+***
+
+
+## Collaboration
+The project is open to user contributions. If you wish to contribute you should contact:
+
+> andres.patino@factoriaf5.org
+***
+## Authors
+
+[Adrián Suñe](https://https://github.com/adriansunye)  
+[Lidia Luque Gallego](https://github.com/LidiaLG)   
+[Ingrid Barrachina](https://github.com/IngridB-afk)  
+[Erick Crespín](https://github.com/ecp12)  
+[Mario Valdés](https://github.com/Mariovalcen)   
+[federico gatti](https://github.com/fcegatti)
+
+
+
+***
+## FAQs
+
+We'll fill this field when you ask something
+

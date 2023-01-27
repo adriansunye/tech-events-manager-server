@@ -27,6 +27,6 @@ class RegisteredUserController extends Controller
         $user->assignRole($role);
 
         Auth::login($user);
-        return to_route('events.index')->with('status', 'Account created');
+        return to_route('events.index')->with('status', 'Compte creat');
     }
 }
