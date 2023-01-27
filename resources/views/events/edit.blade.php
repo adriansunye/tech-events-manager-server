@@ -2,7 +2,8 @@
   :title="$event->title" 
   :meta-description="$event->description"
 >
-<h1 class="my-4 text-3xl text-center text-sky-600 dark:text-sky-500">Edit form</h1>
+<x-layouts.header-navigation :event=$event/>
+
 <form class=" max-w-xl px-8 py-2 mx-auto bg-white rounded" 
 action="{{ route('events.update', $event) }}" method="POST" enctype="multipart/form-data">    
   @csrf @method('PATCH')
