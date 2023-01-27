@@ -26,6 +26,6 @@ class JoinController extends Controller
         
         //dispatch(new SendEmailJob($details));
 
-        return to_route('events.index')->with('status', 'Joined');
+        return to_route('events.index')->with('status', 't\'has unit');
     }
 }

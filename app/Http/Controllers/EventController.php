@@ -72,7 +72,7 @@ class EventController extends Controller
         $event->highlighted = $request->boolean('highlighted');
 
         $event->save();
-        return to_route('events.index')->with('status', 'Event created');
+        return to_route('events.index')->with('status', 'Esdeveniment creat');
     }
 
     public function edit(Event $event)
@@ -113,13 +113,13 @@ class EventController extends Controller
         $event->highlighted = $request->boolean('highlighted');
 
         $event->update();
-        return to_route('events.show', $event)->with('status', 'Event updated');
+        return to_route('events.show', $event)->with('status', 'Esdeveniment actualitzat');
     }
 
     public function destroy(Event $event)
     {
         $event->delete();
-        return to_route('events.index')->with('status', 'Event deleted');
+        return to_route('events.index')->with('status', 'Esdeveniment esborrat');
     }
     
 }

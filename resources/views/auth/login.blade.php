@@ -32,7 +32,7 @@
             <div class="mb-1">
                 <input
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-emerald-400 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    name="password" type="password" placeholder="Ingessa la teva contrassenya">
+                    name="password" type="password" placeholder="Ingressa la teva contrasenya">
                 @error('password')
                     <small class="font-bold text-red-500/80">{{ $message }}</small>
                 @enderror
