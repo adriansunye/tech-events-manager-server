@@ -10,7 +10,6 @@
 
 <body class="antialiased bg-white">
     
-
     @if(session('status'))
     <div class=" z-50 px-3 py-2 font-bold text-white bg-emerald-500 dark:bg-emerald-700">
         {{ session('status') }}
