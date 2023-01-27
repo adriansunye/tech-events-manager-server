@@ -1,8 +1,7 @@
-<main class="grid w-full gap-4 lg:gap-x-32 px-6 md:px-16 pb-3  -translate-y-52 sm:-translate-y-0 sm:-top-0 sm:left-0">    
+<main class="grid w-full gap-4 lg:gap-x-32 px-6 md:px-16 pb-24">    
     @foreach ($events->sortBy('expiration_date') as $event)
-    <a href="{{ route('events.show', $event) }}">
         <div id="app"
-            class="bg-white  rounded-lg border-t shadow-md flex card text-grey-darkest">
+            href="{{ route('events.show', $event) }}"class="bg-white  rounded-lg shadow-md flex card text-grey-darkest">
             <div class=" flex gap-3 flex-col justify-between">
                 <img class="mt-3 ml-3 max-w-36 max-h-36  rounded-lg"
                     src="{{ asset('storage/images/events/' . $event->image_path) }}" alt="Room Image">
@@ -14,11 +13,11 @@
                         
                         <form action="{{ route('relation', $event) }}" method="POST" class="my-0">
                             @csrf
-                            <button onclick="this.closest('form').submit()"
-                                class="p-1 pl-12 mr-2  justify-end transition hover:bg-grey-light">
+                            <div onclick="this.closest('form').submit()"
+                                class="p-1 mr-2 flex items-center  justify-end transition hover:bg-grey-light">
                                 Apuntar-s'hi
                                 <i class="fas fa-chevron-right"></i>
-                            </button>
+                            </div>
                             </a>
                         </form>
                     </div>
@@ -118,6 +117,5 @@
                 </div>
             </div>
         </div>
-    </a>
     @endforeach
 </main>
