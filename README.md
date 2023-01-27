@@ -26,18 +26,26 @@ Users may join and leave events, and access information related to them.
 
 ## Screenshots
 
-![screenshot01]()
-***
-![screenshot02]()
-***
-![screenshot03]()
-***
-![screenshot04]()
+<table>
+<tr>
+<td><img src="./storage/images/screenshot001.png"></td>
+<td><img src="./storage/images/screenshot004.png"></td>
+<td><img src="./storage/images/screenshot003.png"></td>
+<td><img src="./storage/images/screenshot007.png"></td>
+</tr>
+<tr>
+<td><img src="./storage/images/screenshot002.png"></td>
+<td><img src="./storage/images/screenshot005.png"></td>
+<td><img src="./storage/images/screenshot006.png"></td>
+<td><img src="./storage/images/screenshot007.png"></td>
+</tr>
+</table>
 
 ***
+
 ## Technologies
 The project was developed with the following technologies
-
+git add .
 * PHP
 * Laravel 9
 * Blade
