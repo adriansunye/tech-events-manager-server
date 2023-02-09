@@ -1,5 +1,6 @@
 # Tech Events Manager
-![Tech-Events-Manager](public\storage\images\events\placeholder.jpg)
+
+<img src=public\storage\images\events\placeholder.jpg alt="EventsAverno Logo" width="200px">
 
 
 ## Table of Contents
@@ -45,7 +46,7 @@ Users may join and leave events, and access information related to them.
 
 ## Technologies
 The project was developed with the following technologies
-git add .
+
 * PHP
 * Laravel 9
 * Blade
